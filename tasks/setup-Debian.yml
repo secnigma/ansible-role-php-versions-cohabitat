@@ -75,6 +75,7 @@
     state: absent
     purge: true
     force: true
+  when: keep_one_php_version_only
   register: php_version_purge
 
 - name: Also purge php-common package if any versions were just purged.
