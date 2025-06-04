@@ -2,12 +2,12 @@
 dependencies: []
 
 galaxy_info:
-  role_name: php-versions
-  author: geerlingguy
-  description: Allows different PHP versions to be installed.
-  company: "Midwestern Mac, LLC"
+  role_name: php-versions-cohabitat
+  author: secnigma
+  description: Allows different PHP versions to be installed, without purging others.
+  company: "Tinkerer CC"
   license: "MIT"
-  issue_tracker_url: https://github.com/geerlingguy/ansible-role-php-versions/issues
+  issue_tracker_url: https://github.com/secnigma/ansible-role-php-versions-cohabitat/issues
   min_ansible_version: 2.15
   platforms:
     - name: Debian
