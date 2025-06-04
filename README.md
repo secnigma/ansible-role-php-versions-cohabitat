@@ -1,48 +1,28 @@
-# Ansible Role: PHP Versions
+# Ansible Role: PHP Versions Cohabitat
 
-[![CI](https://github.com/geerlingguy/ansible-role-php-versions/actions/workflows/ci.yml/badge.svg)](https://github.com/geerlingguy/ansible-role-php-versions/actions/workflows/ci.yml)
+Based on v7.0.0 of [Jeff Geerling's PHP Versions Ansible role](https://github.com/geerlingguy/ansible-role-php-versions) created in 2017 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
 
-Allows different PHP versions to be installed when using the `geerlingguy.php` role (or a similar role). This role was originally built for [Drupal VM](https://www.drupalvm.com) but was released more generically so others could use an easier mechanism for switching PHP versions.
+## Purpose of this fork
 
-## Requirements
+Forked to make the purging action of other PHP versions an optional task, controllable via the boolean variable 
+`keep_one_php_version_only` , since [Jeff wants to keep this purging behaviour in his role as is](https://github.com/geerlingguy/ansible-role-php-versions/issues/85).
 
-N/A
+
+By default, `keep_one_php_version_only` is set to `false`; means this role won't purge other PHP versions already installed on the server.
+
+Hence the name Cohabitat!
 
 ## Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
     php_version: '8.3'
-
-The PHP version to be installed. Any [currently-supported PHP major version](http://php.net/supported-versions.php) is a valid option (e.g. `8.1`, `8.2`, or `8.3`).
-
-    php_versions_install_recommends: false
-
-(For Debian OSes only) Whether to install recommended packages. This is set to `no` by default because setting it to `yes` often leads to multiple PHP versions being installed (thus making a bit of a mess) when using repos like Ondrej's PHP PPA for Ubuntu.
-
-## Dependencies
-
-  - geerlingguy.php is a soft dependency as the `php_version` variable is required to be set.
-  - geerlingguy.repo-remi, if you're using CentOS or a Red Hat derivative.
-
-## Example Playbook
-
-    - hosts: webservers
-      become: true
-    
-      vars:
-        php_version: '8.3'
-    
-      roles:
-        - name: geerlingguy.repo-remi
-          when: ansible_os_family == 'RedHat'
-        - geerlingguy.php-versions
-        - geerlingguy.php
+    keep_one_php_version_only: false
 
 ## License
 
 MIT / BSD
 
-## Author Information
+## Full Documentation
 
-This role was created in 2017 by [Jeff Geerling](https://www.jeffgeerling.com/), author of [Ansible for DevOps](https://www.ansiblefordevops.com/).
+Available at [Jeff Geerling's PHP Versions Ansible role repo](https://github.com/geerlingguy/ansible-role-php-versions) 
